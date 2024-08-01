@@ -27,11 +27,10 @@
             font-weight: 700;
         }
         .navbar-large {
-            height: 100px;
+            padding: 30px 1rem;
             background-color: rgba(255, 255, 255, 0.9);
         }
         .navbar-small {
-            height: 60px;
             background-color: rgba(255, 255, 255, 0.6);
         }
         .hero {
@@ -56,7 +55,6 @@
             padding-top: 10px;
             height: 100svh;
         }
-
         #contact {
             height: 500px;
         }
@@ -216,7 +214,7 @@
                 navbar.classList.add('navbar-small');
             } else {
                 navbar.classList.remove('navbar-small');
-                navbar.classList.add('navbar-large');
+                navbar.classList.add('navbar-large');d
             }
         };
 
@@ -244,10 +242,10 @@
                     behavior: 'smooth'
                 });
             }
-        }
+        }d
 
         // Attach event listeners to navbar links
-        document.querySelectorAll('.nav-link, .navbar-brand').forEach(anchor => {
+        document.querySelectorAll('.nav-link:not(.dropdown-toggle), .navbar-brand').forEach(anchor => {
             const navToggleButton = document.getElementsByClassName('navbar-toggler');
             const menuToggleable = document.getElementById('navbarNav');
             const menuCollapse = new bootstrap.Collapse(menuToggleable, {toggle:false})
@@ -256,12 +254,12 @@
                 // Prevent default link behavior
                 e.preventDefault();
 
+                // Extract the target section id from the href attribute
+                var sectionId = this.getAttribute('href').substring(1); // Remove the '#' symbol
+                
                 if (menuToggleable.classList.contains('show')) {  // only fire on mobile
                     menuCollapse.toggle() 
                 }
-
-                // Extract the target section id from the href attribute
-                var sectionId = this.getAttribute('href').substring(1); // Remove the '#' symbol
 
                 // Call the function to scroll to the section 100px below
                 scrollToSection(sectionId);
