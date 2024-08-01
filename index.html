@@ -64,10 +64,27 @@
             font-size: 4rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
         }
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .about-image {
+            max-width: 350px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .about-text {
+            max-width: 510px;
+            margin: 20px;
+            width: 100%;
+        }
         #about, #services {
             margin-top: 60px;
             padding-top: 10px;
-            height: 100svh;
+            min-height: 100svh;
         }
         #contact {
             height: calc(100svh - (60px + 112px));
@@ -166,8 +183,16 @@
     <!-- About Section -->
     <section id="about" class="container">
         <h2 class="text-center">About</h2>
-        <p class="text-center">Information about Nick Lennon and his drumming career.</p>
+        <div class="about-content">
+            <img src="images/profile.jpg" alt="Nick Lennon" class="about-image">
+            <div class="about-text">
+                <p>Nick Lennon, a virtuoso drummer known for his dynamic performances and innovative techniques, has been captivating audiences worldwide for over a decade. His journey began at a young age, inspired by the legendary drummers of rock and jazz. Over the years, Nick has honed his craft, blending traditional rhythms with modern beats to create a unique sound that resonates with fans across genres.</p>
+                <p>Having toured extensively with several renowned bands, Nick has shared the stage with some of the biggest names in the music industry. His versatility and passion for music have earned him a reputation as one of the most sought-after drummers in the scene today. From electrifying live shows to intricate studio recordings, Nick's artistry shines through in every performance.</p>
+                <p>Beyond his work as a performer, Nick is also dedicated to nurturing the next generation of drummers. He regularly conducts workshops and masterclasses, imparting his knowledge and skills to aspiring musicians. His commitment to music education and his contributions to the drumming community have solidified his legacy as not only a remarkable artist but also a mentor and inspiration to many.</p>
+            </div>
+        </div>
     </section>
+
 
     <!-- Services Section -->
     <section id="services" class="services container text-center">
