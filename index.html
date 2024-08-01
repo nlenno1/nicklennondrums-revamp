@@ -248,9 +248,17 @@
 
         // Attach event listeners to navbar links
         document.querySelectorAll('.nav-link, .navbar-brand').forEach(anchor => {
+            const navToggleButton = document.getElementsByClassName('navbar-toggler');
+            const menuToggleable = document.getElementById('navbarNav');
+            const menuCollapse = new bootstrap.Collapse(menuToggleable, {toggle:false})
+
             anchor.addEventListener('click', function(e) {
                 // Prevent default link behavior
                 e.preventDefault();
+
+                if (menuToggleable.classList.contains('show')) {  // only fire on mobile
+                    menuCollapse.toggle() 
+                }
 
                 // Extract the target section id from the href attribute
                 var sectionId = this.getAttribute('href').substring(1); // Remove the '#' symbol
