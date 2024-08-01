@@ -85,7 +85,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Services
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu remain-open" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item servicesDropdownItem" href="#services" onclick="showCarouselItem(0)">Performance</a>
                         <a class="dropdown-item servicesDropdownItem" href="#services" onclick="showCarouselItem(1)">Recording</a>
                         <a class="dropdown-item servicesDropdownItem" href="#services" onclick="showCarouselItem(2)">Transcription</a>
@@ -201,9 +201,6 @@
         function showCarouselItem(index) {
             scrollToSection('services');
             $('#servicesCarousel').carousel(index);
-            $('html, body').animate({
-                scrollTop: $("#services").offset().top - 60 // Adjust the offset here if needed
-            }, 1000);
         }
 
         // Shrink the navbar on scroll
@@ -214,7 +211,7 @@
                 navbar.classList.add('navbar-small');
             } else {
                 navbar.classList.remove('navbar-small');
-                navbar.classList.add('navbar-large');d
+                navbar.classList.add('navbar-large');
             }
         };
 
@@ -242,10 +239,10 @@
                     behavior: 'smooth'
                 });
             }
-        }d
+        }
 
         // Attach event listeners to navbar links
-        document.querySelectorAll('.nav-link:not(.dropdown-toggle), .navbar-brand').forEach(anchor => {
+        document.querySelectorAll('.nav-link:not(.dropdown-toggle), .navbar-brand, .dropdown-item').forEach(anchor => {
             const navToggleButton = document.getElementsByClassName('navbar-toggler');
             const menuToggleable = document.getElementById('navbarNav');
             const menuCollapse = new bootstrap.Collapse(menuToggleable, {toggle:false})
@@ -256,7 +253,7 @@
 
                 // Extract the target section id from the href attribute
                 var sectionId = this.getAttribute('href').substring(1); // Remove the '#' symbol
-                
+
                 if (menuToggleable.classList.contains('show')) {  // only fire on mobile
                     menuCollapse.toggle() 
                 }
