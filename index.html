@@ -18,13 +18,28 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth; /* Enables smooth scrolling */
+        }
+        .navbar {
+            transition: all 0.4s ease;
         }
         .navbar-brand {
             font-weight: 700;
         }
+        .navbar-large {
+            height: 100px;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        .navbar-small {
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.6);
+        }
         .hero {
-            background: url('path/to/your/hero-image.jpg') no-repeat center center;
+            background: url('images/hero-image.jpg') no-repeat center center;
             background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
             height: 100vh;
             display: flex;
             align-items: center;
@@ -36,74 +51,101 @@
             font-size: 4rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
         }
-        .services {
-            padding: 50px 0;
+        #about, #services, #contact{
+            margin-top: 60px;
+            padding-top: 10px;
         }
         .carousel-item img {
             width: 100%;
             height: 400px;
             object-fit: cover;
         }
+        #about, #services {
+            height: 100vh;
+        }
     </style>
 </head>
 <body>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Nick Lennon Drums</a>
+    <nav class="navbar navbar-expand-lg navbar-light navbar-large fixed-top">
+        <a class="navbar-brand" href="#home">Nick Lennon Drums</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="#home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Services
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item servicesDropdownItem" href="#services" onclick="showCarouselItem(0)">Performance</a>
+                        <a class="dropdown-item servicesDropdownItem" href="#services" onclick="showCarouselItem(1)">Recording</a>
+                        <a class="dropdown-item servicesDropdownItem" href="#services" onclick="showCarouselItem(2)">Transcription</a>
+                        <a class="dropdown-item servicesDropdownItem" href="#services" onclick="showCarouselItem(3)">Tuition</a>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="#contact">Contact</a>
                 </li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <h1>Welcome to Nick Lennon Drums</h1>
+    <section id="home" class="hero">
+        <p>Welcome to </p>
+        <h1>Nick Lennon Drums</h1>
         <p>Professional drummer available for sessions, live performances, and lessons.</p>
     </section>
 
+    <!-- About Section -->
+    <section id="about" class="container">
+        <h2 class="text-center">About</h2>
+        <p class="text-center">Information about Nick Lennon and his drumming career.</p>
+    </section>
+
     <!-- Services Section -->
-    <section class="services container text-center">
+    <section id="services" class="services container text-center">
         <h2>Our Services</h2>
         <div id="servicesCarousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#servicesCarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#servicesCarousel" data-slide-to="1"></li>
                 <li data-target="#servicesCarousel" data-slide-to="2"></li>
+                <li data-target="#servicesCarousel" data-slide-to="3"></li>
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="path/to/your/image1.jpg" alt="Service 1">
+                    <img src="path/to/your/image1.jpg" alt="Performance">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Live Performances</h5>
                         <p>Experience electrifying live performances.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="path/to/your/image2.jpg" alt="Service 2">
+                    <img src="path/to/your/image2.jpg" alt="Recording">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Session Drumming</h5>
                         <p>Professional session drumming for your recordings.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="path/to/your/image3.jpg" alt="Service 3">
+                    <img src="path/to/your/image3.jpg" alt="Transcription">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Drum Transcription</h5>
+                        <p>Accurate drum transcriptions for your projects.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="path/to/your/image4.jpg" alt="Tuition">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Drum Lessons</h5>
                         <p>Personalized drum lessons for all skill levels.</p>
@@ -122,7 +164,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="container mt-5">
+    <section id="contact" class="container">
         <h2 class="text-center">Contact Us</h2>
         <form>
             <div class="form-group">
@@ -142,7 +184,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-light text-center py-3 mt-5">
+    <footer class="bg-light text-center py-3">
         <p>&copy; 2024 Nick Lennon Drums. All rights reserved.</p>
         <p>Email: <a href="mailto:info@nicklennondrums.com">info@nicklennondrums.com</a></p>
     </footer>
@@ -151,5 +193,76 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+         let currentSection = null;
+
+        function showCarouselItem(index) {
+            scrollToSection('services');
+            $('#servicesCarousel').carousel(index);
+            $('html, body').animate({
+                scrollTop: $("#services").offset().top - 60 // Adjust the offset here if needed
+            }, 1000);
+        }
+
+        // Shrink the navbar on scroll
+        window.onscroll = function() {
+            var navbar = document.querySelector('.navbar');
+            if (document.documentElement.scrollTop > 50) {
+                navbar.classList.remove('navbar-large');
+                navbar.classList.add('navbar-small');
+            } else {
+                navbar.classList.remove('navbar-small');
+                navbar.classList.add('navbar-large');
+            }
+        };
+
+        /**
+         * Scrolls the page to 100 pixels below the top of a section with the given id.
+         * @param {string} sectionId - The id of the section to scroll to.
+         */
+        function scrollToSection(sectionId) {
+            // Get the section element by its id
+            var section = document.getElementById(sectionId);
+
+            // Check if the section exists and is different from the current section
+            if (section && section !== currentSection) {
+                currentSection = section;
+                
+                // Get the position of the section
+                var sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
+                
+                // Calculate the target position (100 pixels below the section)
+                var targetPosition = sectionTop - 60; // Adjust this value if needed
+
+                // Smooth scroll to the target position
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Attach event listeners to navbar links
+        document.querySelectorAll('.nav-link, .navbar-brand').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                // Prevent default link behavior
+                e.preventDefault();
+
+                // Extract the target section id from the href attribute
+                var sectionId = this.getAttribute('href').substring(1); // Remove the '#' symbol
+
+                // Call the function to scroll to the section 100px below
+                scrollToSection(sectionId);
+            });
+        });
+
+        document.querySelectorAll('.servicesDropdownItem').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault()
+            })
+        })
+    </script>
 </body>
 </html>
