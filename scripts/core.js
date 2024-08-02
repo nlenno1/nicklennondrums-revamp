@@ -1,7 +1,7 @@
 function showCarouselItem(index) {
     scrollToSection('services');
     $('#servicesCarousel').carousel(index);
-}
+} 
 
 // Shrink the navbar on scroll
 window.onscroll = function() {
