@@ -15,124 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            scroll-behavior: smooth;
-        }
-        .navbar {
-            transition: all 0.4s ease;
-            background-color: rgba(255, 255, 255, 0.98);
-        }
-        .navbar-nav {
-            padding-top: 40px;
-            gap: 15px;
-            padding-top: 40px;
-            text-align: center;
-        }
-        .navbar-brand {
-            font-weight: 700;
-        }
-        .navbar-large {
-            padding: 30px 1rem;
-        }
-        .navbar-small {
-            padding: 10px 1rem;
-        }
-        .nav-link {
-            font-size: 20px;
-            font-weight: 700 !important;
-        }
-        .hero {
-            background: url('images/hero-image.jpg') no-repeat center top;
-            background-size: cover;
-
-            height: 100svh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: stretch;
-            color: white;
-            padding: 20px; 
-        }
-        .hero-banner {
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: 4rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-        }
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-around;
-        }
-        .about-image {
-            max-width: 350px;
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        .about-text {
-            max-width: 510px;
-            margin: 20px;
-            width: 100%;
-        }
-        #about, #services {
-            margin-top: 60px;
-            padding-top: 10px;
-            min-height: 100svh;
-        }
-        #contact {
-            height: calc(100svh - (60px + 112px));
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .carousel-item img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-        }
-        .carousel-caption {
-            background-color: rgba(0, 0, 0, 0.6);
-        }
-        .dropdown-item {
-            padding: 15px 1.5rem;
-        }
-        .dropdown-menu {
-            padding: 20px 0;
-            font-size: 20px;
-            text-align: center;
-        }
-        @media screen and (min-width: 992px) {
-            .hero .hero-banner {
-                padding-left: 20%;
-                text-align: left;
-            }
-            .navbar-nav {
-                padding-top: initial;
-                gap: initial;
-                padding-top: initial;
-                text-align: initial;
-            }
-            .dropdown-item {
-                padding: .25rem 1.5rem;
-            }
-            .dropdown-menu {
-                top: 52px;
-                left: -20px;
-                border: none;
-                border-radius: 0;
-                font-size: 16px;
-                padding: .5rem 0;
-                text-align: left;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/styles/core.css">
+    <link rel="stylesheet" href="/styles/home.css">
 </head>
 <body>
 
@@ -189,7 +73,6 @@
             </div>
         </div>
     </section>
-
 
     <!-- Services Section -->
     <section id="services" class="services container text-center">
@@ -276,79 +159,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     
     <!-- Custom JS -->
-    <script>
-         let currentSection = null;
-
-        function showCarouselItem(index) {
-            scrollToSection('services');
-            $('#servicesCarousel').carousel(index);
-        }
-
-        // Shrink the navbar on scroll
-        window.onscroll = function() {
-            var navbar = document.querySelector('.navbar');
-            if (document.documentElement.scrollTop > 50) {
-                navbar.classList.remove('navbar-large');
-                navbar.classList.add('navbar-small');
-            } else {
-                navbar.classList.remove('navbar-small');
-                navbar.classList.add('navbar-large');
-            }
-        };
-
-        /**
-         * Scrolls the page to 100 pixels below the top of a section with the given id.
-         * @param {string} sectionId - The id of the section to scroll to.
-         */
-        function scrollToSection(sectionId) {
-            // Get the section element by its id
-            var section = document.getElementById(sectionId);
-
-            // Check if the section exists and is different from the current section
-            if (section && section !== currentSection) {
-                currentSection = section;
-                
-                // Get the position of the section
-                var sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
-                
-                // Calculate the target position (100 pixels below the section)
-                var targetPosition = sectionTop - 60; // Adjust this value if needed
-
-                // Smooth scroll to the target position
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        }
-
-        // Attach event listeners to navbar links
-        document.querySelectorAll('.nav-link:not(.dropdown-toggle), .navbar-brand, .dropdown-item').forEach(anchor => {
-            const navToggleButton = document.getElementsByClassName('navbar-toggler');
-            const menuToggleable = document.getElementById('navbarNav');
-            const menuCollapse = new bootstrap.Collapse(menuToggleable, {toggle:false})
-
-            anchor.addEventListener('click', function(e) {
-                // Prevent default link behavior
-                e.preventDefault();
-
-                // Extract the target section id from the href attribute
-                var sectionId = this.getAttribute('href').substring(1); // Remove the '#' symbol
-
-                if (menuToggleable.classList.contains('show')) {  // only fire on mobile
-                    menuCollapse.toggle() 
-                }
-
-                // Call the function to scroll to the section 100px below
-                scrollToSection(sectionId);
-            });
-        });
-
-        document.querySelectorAll('.servicesDropdownItem').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault()
-            })
-        })
-    </script>
+    <script src="../scripts/core.js"></script>
 </body>
 </html>

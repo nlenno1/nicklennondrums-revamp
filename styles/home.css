@@ -1,0 +1,63 @@
+.hero {
+    background: url('../images/hero-image.jpg') no-repeat center top;
+    background-size: cover;
+
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    color: white;
+    padding: 20px; 
+}
+.hero-banner {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    text-align: center;
+}
+.hero h1 {
+    font-size: 4rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+.about-image {
+    max-width: 350px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+.about-text {
+    max-width: 510px;
+    margin: 20px;
+    width: 100%;
+}
+#about, #services {
+    margin-top: 60px;
+    padding-top: 10px;
+    min-height: 100svh;
+}
+#contact {
+    height: calc(100svh - (60px + 112px));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.carousel-item img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+@media screen and (min-width: 992px) {
+    .hero .hero-banner {
+        padding-left: 20%;
+        text-align: left;
+    }
+}
