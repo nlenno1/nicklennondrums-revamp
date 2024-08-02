@@ -1,5 +1,3 @@
-let currentSection = null;
-
 function showCarouselItem(index) {
     scrollToSection('services');
     $('#servicesCarousel').carousel(index);
@@ -24,11 +22,8 @@ window.onscroll = function() {
 function scrollToSection(sectionId) {
     // Get the section element by its id
     var section = document.getElementById(sectionId);
-
     // Check if the section exists and is different from the current section
-    if (section && section !== currentSection) {
-        currentSection = section;
-        
+    if (section) {
         // Get the position of the section
         var sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
         
