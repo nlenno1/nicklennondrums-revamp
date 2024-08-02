@@ -3,18 +3,6 @@ function showCarouselItem(index) {
     $('#servicesCarousel').carousel(index);
 }
 
-// Shrink the navbar on scroll
-window.onscroll = function() {
-    var navbar = document.querySelector('.navbar');
-    if (document.documentElement.scrollTop > 50) {
-        navbar.classList.remove('navbar-large');
-        navbar.classList.add('navbar-small');
-    } else {
-        navbar.classList.remove('navbar-small');
-        navbar.classList.add('navbar-large');
-    }
-};
-
 /**
  * Scrolls the page to 100 pixels below the top of a section with the given id.
  * @param {string} sectionId - The id of the section to scroll to.
@@ -36,6 +24,20 @@ function scrollToSection(sectionId) {
             behavior: 'smooth'
         });
     }
+}
+
+function addNavbarResizeOnScroll() {
+    // Shrink the navbar on scroll
+    window.onscroll = function() {
+        var navbar = document.querySelector('.navbar');
+        if (document.documentElement.scrollTop > 50) {
+            navbar.classList.remove('navbar-large');
+            navbar.classList.add('navbar-small');
+        } else {
+            navbar.classList.remove('navbar-small');
+            navbar.classList.add('navbar-large');
+        }
+    };
 }
 
 function addNavbarFunctionality () {
@@ -88,6 +90,7 @@ async function loadPage() {
         loadHTML('/templates/footer.html', 'footer-container')
       ]);
       addNavbarFunctionality();
+      addNavbarResizeOnScroll();
     } catch (error) {
       console.error('Error loading content:', error);
     }
