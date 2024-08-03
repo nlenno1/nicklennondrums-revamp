@@ -85,7 +85,7 @@ async function loadHTML(url, elementId) {
 }
 
 async function loadPage() {
-    const baseUrl = window.location.origin;
+    const baseUrl = `${window.location.origin}${window.location.pathname.split('/').slice(0, -1).join('/')}`;
     const navbarUrl = `${baseUrl}/templates/navbar.html`;
     const footerUrl = `${baseUrl}/temaplates/footer.html`;
     try {
