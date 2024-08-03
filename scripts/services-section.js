@@ -1,3 +1,26 @@
+/**
+ * Scrolls the page to 100 pixels below the top of a section with the given id.
+ * @param {string} sectionId - The id of the section to scroll to.
+ */
+function scrollToSection(sectionId) {
+    // Get the section element by its id
+    var section = document.getElementById(sectionId);
+    // Check if the section exists and is different from the current section
+    if (section) {
+        // Get the position of the section
+        var sectionTop = section.getBoundingClientRect().top + window.scrollY;
+        
+        // Calculate the target position (100 pixels below the section)
+        var targetPosition = sectionTop - 60; // Adjust this value if needed
+
+        // Smooth scroll to the target position
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    }
+}
+
 function waitForTransitionEnd(element) {
     return new Promise((resolve) => {
         const handleTransitionEnd = () => {
@@ -8,7 +31,7 @@ function waitForTransitionEnd(element) {
     });
 }
 
-function showServicesDetail(serviceName) {
+async function showServicesDetail(serviceName) {
     switch (serviceName.toLowerCase()) {
         case 'performance':
             description = ` With over a decade of experience in live performance, I bring a dynamic and engaging presence to the stage. My expertise spans various genres, from rock and jazz to electronic and classical. I have performed at major venues and festivals, working with both established and emerging artists. My approach combines technical proficiency with an intuitive understanding of audience interaction, ensuring every performance is memorable and impactful.`;
@@ -27,6 +50,14 @@ function showServicesDetail(serviceName) {
             break;
     }
 
+    document.querySelectorAll(".carousel-item img").forEach(carouselItem => {
+        if (carouselItem.style.height != "260px") {
+            carouselItem.style.height = "260px";
+        }
+    })
+
+    scrollToSection('services');
+
     const element = document.querySelector('.service-detail-display');
     if (element) {
         element.innerHTML = `
@@ -44,6 +75,9 @@ function showServicesDetail(serviceName) {
 async function hideServicesDetail() {
     const servicesDetailDisplay = document.querySelector('.service-detail-display');
     servicesDetailDisplay.style.opacity = "0";
+    document.querySelectorAll(".carousel-item img").forEach(carouselItem => {
+        carouselItem.style.height = "400px";
+    })
     await waitForTransitionEnd(servicesDetailDisplay); 
     servicesDetailDisplay.innerHTML="";
 }
