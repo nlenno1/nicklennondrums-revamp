@@ -86,8 +86,8 @@ async function loadHTML(url, elementId) {
 async function loadPage() {
     try {
       await Promise.all([
-        loadHTML('/templates/navbar.html', 'navbar-container'),
-        loadHTML('/templates/footer.html', 'footer-container')
+        loadHTML('../templates/navbar.html', 'navbar-container'),
+        loadHTML('../templates/footer.html', 'footer-container')
       ]);
       addNavbarFunctionality();
       addNavbarResizeOnScroll();
