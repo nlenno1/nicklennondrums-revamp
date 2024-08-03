@@ -31,7 +31,7 @@ function waitForTransitionEnd(element) {
     });
 }
 
-async function showServicesDetail(serviceName) {
+function showServicesDetail(serviceName) {
     switch (serviceName.toLowerCase()) {
         case 'performance':
             description = ` With over a decade of experience in live performance, I bring a dynamic and engaging presence to the stage. My expertise spans various genres, from rock and jazz to electronic and classical. I have performed at major venues and festivals, working with both established and emerging artists. My approach combines technical proficiency with an intuitive understanding of audience interaction, ensuring every performance is memorable and impactful.`;
@@ -78,6 +78,7 @@ async function hideServicesDetail() {
     document.querySelectorAll(".carousel-item img").forEach(carouselItem => {
         carouselItem.style.height = "400px";
     })
-    await waitForTransitionEnd(servicesDetailDisplay); 
     servicesDetailDisplay.innerHTML="";
+    await waitForTransitionEnd(servicesDetailDisplay); 
+    scrollToSection('services');
 }
