@@ -52,9 +52,13 @@ function addNavbarFunctionality () {
             e.preventDefault();
     
             // Extract the target section id from the href attribute
-            var sectionId = this.getAttribute('href').substring(1); // Remove the '#' symbol
+            var sectionId = this.getAttribute('href').substring(1);
+
+            if (sectionId == 'services') {
+                hideServicesDetail();
+            }
     
-            if (menuToggleable.classList.contains('show')) {  // only fire on mobile
+            if (menuToggleable.classList.contains('show')) {
                 menuCollapse.toggle() 
             }
     
