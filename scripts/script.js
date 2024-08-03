@@ -77,6 +77,7 @@ async function loadHTML(url, elementId) {
         throw new Error('Network response was not ok');
       }
       const html = await response.text();
+      if (html == "") {console.error(`Failed to load content for ${elementId}`)}
       document.getElementById(elementId).innerHTML = html;
     } catch (error) {
       console.error('Failed to load HTML:', error);
@@ -85,16 +86,20 @@ async function loadHTML(url, elementId) {
 
 async function loadPage() {
     try {
+        const baseUrl = window.location.origin;
+        const navbarUrl = `${baseUrl}/templates/navbar.html`;
+        const footerUrl = `${baseUrl}/temaplates/footer.html`;
+        console.log(baseUrl, navbarUrl, footerUrl);
       await Promise.all([
-        loadHTML('../templates/navbar.html', 'navbar-container'),
-        loadHTML('../templates/footer.html', 'footer-container')
+        loadHTML(navbarUrl, 'navbar-container'),
+        loadHTML(footerUrl, 'footer-container')
       ]);
       addNavbarFunctionality();
       addNavbarResizeOnScroll();
     } catch (error) {
       console.error('Error loading content:', error);
     }
-  }
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     loadPage();
