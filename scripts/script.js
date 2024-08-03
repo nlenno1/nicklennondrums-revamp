@@ -89,7 +89,6 @@ async function loadPage() {
     const navbarUrl = `${baseUrl}/templates/navbar.html`;
     const footerUrl = `${baseUrl}/templates/footer.html`;
     try {
-        console.log(baseUrl, navbarUrl, footerUrl);
       await Promise.all([
         loadHTML(navbarUrl, 'navbar-container'),
         loadHTML(footerUrl, 'footer-container')
