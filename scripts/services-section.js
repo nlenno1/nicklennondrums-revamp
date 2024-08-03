@@ -66,7 +66,7 @@ function showServicesDetail(serviceName) {
                     ${description}
                 </p>
             </div>
-            <button class="close-center-button" onClick="hideServicesDetail()">&circ;</button>
+            <button class="close-center-button" onClick="hideServicesDetail()">&times;</button>
         `;
         element.style.opacity = "1";
     }
