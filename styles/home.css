@@ -43,11 +43,10 @@
     margin-bottom: 100px;
     min-height: 100svh;
 }
-.contact-background {
+#contact {
     background: url('../images/drum-kit-black-and-white.jpg') no-repeat center top;
     background-size: cover;
-}
-#contact {
+    padding: 20px;
     min-height: calc(100svh - (60px + 112px));
     display: flex;
     flex-direction: column;
@@ -57,6 +56,9 @@
 #contact .contact-form-container {
     background-color: rgba(0,0,0,0.5);
     padding: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 #contact .form-group {
     width: 100%;
