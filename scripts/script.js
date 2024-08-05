@@ -1,6 +1,12 @@
 function showCarouselItem(index) {
     scrollToSection('services');
-    $('#servicesCarousel').carousel(index);
+    var carousel = document.getElementById('servicesCarousel');
+    var bootstrapCarousel = bootstrap.Carousel.getInstance(carousel); // Get the instance
+    if (!bootstrapCarousel) {
+        bootstrapCarousel = new bootstrap.Carousel(carousel); // Create a new instance if not already created
+        console.log('carousel instance created');
+    }
+    bootstrapCarousel.to(index);
 }
 
 /**

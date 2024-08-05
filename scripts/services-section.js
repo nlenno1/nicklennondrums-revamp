@@ -75,10 +75,10 @@ function showServicesDetail(serviceName) {
 async function hideServicesDetail() {
     const servicesDetailDisplay = document.querySelector('.service-detail-display');
     servicesDetailDisplay.style.opacity = "0";
+    scrollToSection('services');
     document.querySelectorAll(".carousel-item img").forEach(carouselItem => {
         carouselItem.style.height = "400px";
     })
     servicesDetailDisplay.innerHTML="";
     await waitForTransitionEnd(servicesDetailDisplay); 
-    scrollToSection('services');
 }
