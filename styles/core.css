@@ -33,6 +33,27 @@ body {
     font-size: 20px;
     text-align: center;
 }
+.social-logo-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    justify-content: center;
+    gap: 50px;
+    position: relative;
+    padding: 0 20px;
+    margin-bottom: 1rem;
+}
+.social-logo-container i {
+    font-size: 35px;
+    color: grey;
+    transition: all 0.2s ease;
+}
+.social-logo-container i:hover {
+    font-size: 35px;
+    color: black;
+}
 .close-center-button {
     transform: translateX(-50%);
     width: 60px;
@@ -48,7 +69,6 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
-
 .closecenter-button:hover, .mobile-center-button:active {
     background-color: #000;
     color: #fff;
@@ -72,5 +92,20 @@ body {
         font-size: 16px;
         padding: .5rem 0;
         text-align: left;
+    }
+    .social-logo-container::before,
+    .social-logo-container::after {
+        content: '';
+        position: absolute;
+        top: 35%;
+        width: 18vw;
+        height: 2px; /* Adjust the thickness of the line */
+        background-color: grey; /* Adjust the color of the line */
+    }
+    .social-logo-container::before {
+        left: 15%; /* Start from the left edge of the viewport */
+    }
+    .social-logo-container::after {
+        right: 15%; /* End in the middle of the viewport */
     }
 }
