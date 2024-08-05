@@ -41,7 +41,7 @@
     padding-top: 10px;
     padding-bottom: 40px;
     margin-bottom: 100px;
-    min-height: 100svh;
+    min-height: calc(100svh - 120px);
 }
 #contact {
     background: url('../images/drum-kit-black-and-white.jpg') no-repeat center top;
@@ -91,9 +91,6 @@
     cursor: pointer;
 }
 /* Services Section */
-#services {
-    min-height: calc(100svh - 60px);
-}
 .service-detail-display {
     padding: 20px 0;
     opacity: 0;
