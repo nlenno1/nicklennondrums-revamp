@@ -41,11 +41,40 @@
     padding-top: 10px;
     min-height: 100svh;
 }
+.contact-background {
+    background: url('../images/drum-kit-black-and-white.jpg') no-repeat center top;
+    background-size: cover;
+}
 #contact {
-    height: calc(100svh - (60px + 112px));
+    min-height: calc(100svh - (60px + 112px));
     display: flex;
     flex-direction: column;
     justify-content: center;
+    color: #fff;
+}
+#contact .contact-form-container {
+    background-color: rgba(0,0,0,0.5);
+    padding: 20px;
+}
+#contact .form-group {
+    width: 100%;
+}
+#contact form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#contact .contact-form-button {
+    width: 150px;
+    color: #fff;
+    border-radius: 0;
+    border: 3px solid #fff;
+    background-color: rgba(0, 0, 0, 0);
+}
+#contact .contact-form-button:hover {
+    color: #000;
+    border: 3px solid transparent;
+    background-color: #fff;
 }
 .carousel-item img {
     width: 100%;
