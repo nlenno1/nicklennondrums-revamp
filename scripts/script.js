@@ -80,6 +80,77 @@ function addNavbarFunctionality () {
     })
 }
 
+function contactFormFunctionality () {
+    const contactForm = document.getElementById('contactForm');
+
+    contactForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        
+        let hasError = false;
+        let hasInvalidCharacters = false;
+        const errorMessages = [];
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        // Basic validation checks
+        if (!name) {
+            hasError = true;
+            errorMessages.push("Name is required.");
+        } else if (!isSafeInput(name)) {
+            hasError = true;
+            errorMessages.push("Invalid characters in name.");
+            hasInvalidCharacters = true;
+        }
+
+        if (!email) {
+            hasError = true;
+            errorMessages.push("Email is required.");
+        } else if (!validateEmail(email)) {
+            hasError = true;
+            errorMessages.push("Invalid email address.");
+            hasInvalidCharacters = true;
+        }
+
+        if (!message) {
+            hasError = true;
+            errorMessages.push("Message is required.");
+        } else if (!isSafeInput(message)) {
+            hasError = true;
+            errorMessages.push("Invalid characters in message.");
+            hasInvalidCharacters = true;
+        }
+        if (hasInvalidCharacters) {
+            errorMessages.push('Please do not use any of the following symbols: /[<>{}[\]()$%^&*]/')
+        }
+
+        if (hasError) {
+            showErrorModal(errorMessages);
+        } else {
+            // Proceed with form submission
+            // contactForm.submit(); // Uncomment this line to enable form submission
+        }
+    });
+
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+    function isSafeInput(input) {
+        const unsafePattern = /[<>{}[\]()$%^&*]/; // Add more characters or patterns as needed
+        return !unsafePattern.test(input);
+    }
+
+    function showErrorModal(messages) {
+        const errorModalBody = document.querySelector('#errorModal .modal-body');
+        errorModalBody.innerHTML = messages.join("<br>");
+        const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+        errorModal.show();
+    }
+}
+
 async function loadHTML(url, elementId) {
     try {
       const response = await fetch(url);
@@ -105,6 +176,7 @@ async function loadPage() {
       ]);
       addNavbarFunctionality();
       addNavbarResizeOnScroll();
+      contactFormFunctionality();
     } catch (error) {
       console.error('Error loading content:', error);
     }
