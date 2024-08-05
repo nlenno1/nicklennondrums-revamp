@@ -22,7 +22,7 @@ function scrollToSection(sectionId) {
         var sectionTop = section.getBoundingClientRect().top + window.scrollY;
         
         // Calculate the target position (100 pixels below the section)
-        var targetPosition = sectionTop - 60; // Adjust this value if needed
+        var targetPosition = sectionTop - 66; // Adjust this value if needed
 
         // Smooth scroll to the target position
         window.scrollTo({
